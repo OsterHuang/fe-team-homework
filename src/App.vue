@@ -2,18 +2,41 @@
   <div id="app">
     <div class="test-pre-processor">
       <div class="app-head">
-        這邊是標題
+        <a href="#" @click.stop="switchPage('BasisUsage')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisUsage' }">基礎使用</a> |
+        <a href="#" @click.stop="switchPage('BasisForm')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisForm' }">基礎表單</a> |
+        <a href="#" @click.stop="switchPage('BasisTwoWayBinding')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisTwoWayBinding' }">雙向綁定</a> |
       </div>
       <div class="app-content">
-        這邊是內容
+        <BasisUsage v-if="viewChecked === 'BasisUsage'" />
+        <BasisForm v-if="viewChecked === 'BasisForm'" />
+        <BasisTwoWayBinding v-if="viewChecked === 'BasisTwoWayBinding'" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import BasisUsage from '@/views/basisUsage'
+import BasisForm from '@/views/basisForm'
+import BasisTwoWayBinding from '@/views/basisTwoWayBinding'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    BasisUsage,
+    BasisForm,
+    BasisTwoWayBinding
+  },
+  data () {
+    return {
+      viewChecked: ''
+    }
+  },
+  methods: {
+    switchPage (name) {
+      this.viewChecked = name
+    }
+  }
 }
 </script>
 
@@ -45,6 +68,15 @@ html, body, div {
   .app-head
     border 1px #ccc solid
     padding 30px
+    .nav-link
+      box-sizing border-box
+      margin-left 0px 8px
+      padding 2px 8px
+      text-decoration none
+      color #224499
+    .nav-link-selected
+      text-decoration underline
+      font-weight bold
   .app-content
     flex 1
     margin-top 8px
