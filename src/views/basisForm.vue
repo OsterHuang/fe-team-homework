@@ -157,5 +157,4 @@ export default {
 .empty-24precent
   display inline-block
   width 24%
-
 </style>
