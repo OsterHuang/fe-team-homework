@@ -13,39 +13,39 @@
       <div class="title">單向綁定編輯</div>
       <div class="row">
          <div>name</div>
-         <div><input :value="person.name" class="wd-full"></div>
+         <div><input :value="person.name" class="wd-full" @input="changeName"></div>
       </div>
       <div class="row">
          <div>sex</div>
          <div>
-           <input id="gender-m" name="gender" type="radio" :checked="person.gender === 'M'" /><label for="gender-m">男</label>
+           <input id="gender-m" name="gender" type="radio" :checked="person.gender === 'M'" value="M" @click="changeGender"/><label for="gender-m">男</label>
            <div class="empty-24precent" />
-           <input id="gender-f" name="gender" type="radio" :checked="person.gender === 'F'" /><label for="gender-f">女</label>
+           <input id="gender-f" name="gender" type="radio" :checked="person.gender === 'F'" value="F" @click="changeGender"/><label for="gender-f">女</label>
           </div>
       </div>
       <div class="row">
          <div>age</div>
          <div>
-           <input type="number" :value="person.age"  class="wd-full"/>
+           <input type="number" :value="person.age"  class="wd-full" @input="changeAge" />
           </div>
       </div>
       <div class="row">
          <div>skills</div>
          <div class="check-box-container">
           <div v-for="option in skillOptions" :key="option" class="check-box-skill">
-            <input :id="'chk_'+option" type="checkbox" value="option" :checked="person.skills.includes(option)" />
+            <input :id="'chk_'+option" type="checkbox" :value="option" :checked="person.skills.includes(option)" @click="changeSkill" />
             <label :for="'chk_'+option">{{option}}</label>
           </div>
         </div>
       </div>
       <div class="row">
          <div>description</div>
-         <div><textarea :value="person.description" class="wd-full" rows="6"></textarea></div>
+         <div><textarea :value="person.description" class="wd-full" rows="6" @input="changeDescription"></textarea></div>
       </div>
       <div class="row">
          <div>county</div>
          <div>
-           <select size="6" class="wd-120" :value="person.county">
+           <select size="6" class="wd-120" :value="person.county" @change="changeCounty">
              <option value="台北市" >台北市</option>
              <option value="新北市" >新北市</option>
              <option value="桃園市" >桃園市</option>
@@ -80,7 +80,30 @@ export default {
     }
   },
   methods: {
-
+    changeName (e) {
+      this.person.name = e.target.value
+    },
+    changeGender (e) {
+      this.person.gender = e.target.value
+    },
+    changeAge (e) {
+      this.person.age = e.target.value
+    },
+    changeSkill (e) {
+      const clickedValue = e.target.value
+      if (this.person.skills.includes(clickedValue)) {
+        const clickedIdx = this.person.skills.indexOf(clickedValue)
+        this.person.skills.splice(clickedIdx, 1)
+      } else {
+        this.person.skills.push(clickedValue)
+      }
+    },
+    changeDescription (e) {
+      this.person.description = e.target.value
+    },
+    changeCounty (e) {
+      this.person.county = e.target.value
+    }
   }
 }
 </script>
