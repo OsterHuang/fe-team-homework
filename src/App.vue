@@ -5,13 +5,15 @@
         <a href="#" @click.stop="switchPage('BasisUsage')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisUsage' }">基礎使用</a> |
         <a href="#" @click.stop="switchPage('BasisForm')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisForm' }">基礎表單</a> |
         <a href="#" @click.stop="switchPage('BasisTwoWayBinding')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisTwoWayBinding' }">雙向綁定</a> |
-        <a href="#" @click.stop="switchPage('CustomTwoWayBinding')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'CustomTwoWayBinding' }">客製雙向綁定</a>
+        <a href="#" @click.stop="switchPage('CustomTwoWayBinding')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'CustomTwoWayBinding' }">客製雙向綁定</a> |
+        <a href="#" @click.stop="switchPage('TodoPage')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'TodoPage' }">Todo列表</a>
       </div>
       <div class="app-content">
         <BasisUsage v-if="viewChecked === 'BasisUsage'" />
         <BasisForm v-if="viewChecked === 'BasisForm'" />
         <BasisTwoWayBinding v-if="viewChecked === 'BasisTwoWayBinding'" />
         <CustomTwoWayBinding v-if="viewChecked === 'CustomTwoWayBinding'" />
+        <TodoPage v-if="viewChecked === 'TodoPage'" />
       </div>
     </div>
   </div>
@@ -22,6 +24,7 @@ import BasisUsage from '@/views/basisUsage'
 import BasisForm from '@/views/basisForm'
 import BasisTwoWayBinding from '@/views/basisTwoWayBinding'
 import CustomTwoWayBinding from '@/views/customTwoWayBinding'
+import TodoPage from '@/views/todoPage'
 
 export default {
   name: 'App',
@@ -29,7 +32,8 @@ export default {
     BasisUsage,
     BasisForm,
     BasisTwoWayBinding,
-    CustomTwoWayBinding
+    CustomTwoWayBinding,
+    TodoPage
   },
   data () {
     return {
