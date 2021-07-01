@@ -10,7 +10,9 @@
         <a href="#" @click.stop="switchPage('SlotUsage')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'SlotUsage' }">Slot使用</a>
       </div>
       <div class="app-content">
-        <component :is="viewChecked" />
+        <keep-alive>
+          <component :is="viewChecked" />
+        </keep-alive>
         <!-- <BasisUsage v-if="viewChecked === 'BasisUsage'" />
         <BasisForm v-if="viewChecked === 'BasisForm'" />
         <BasisTwoWayBinding v-if="viewChecked === 'BasisTwoWayBinding'" />
