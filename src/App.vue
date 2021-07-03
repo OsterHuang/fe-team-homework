@@ -25,22 +25,22 @@
 </template>
 
 <script>
-import BasisUsage from '@/views/basisUsage'
-import BasisForm from '@/views/basisForm'
-import BasisTwoWayBinding from '@/views/basisTwoWayBinding'
-import CustomTwoWayBinding from '@/views/customTwoWayBinding'
-import TodoPage from '@/views/todoPage'
-import SlotUsage from '@/views/slotUsage'
+// import BasisUsage from '@/views/basisUsage'
+// import BasisForm from '@/views/basisForm'
+// import BasisTwoWayBinding from '@/views/basisTwoWayBinding'
+// import CustomTwoWayBinding from '@/views/customTwoWayBinding'
+// import TodoPage from '@/views/todoPage'
+// import SlotUsage from '@/views/slotUsage'
 
 export default {
   name: 'App',
   components: {
-    BasisUsage,
-    BasisForm,
-    BasisTwoWayBinding,
-    CustomTwoWayBinding,
-    TodoPage,
-    SlotUsage
+    BasisUsage: () => import(/* webpackChunkName: "BasisUsage" */'@/views/basisUsage'),
+    BasisForm: () => import(/* webpackChunkName: "BasisForm" */'@/views/basisForm'),
+    BasisTwoWayBinding: () => import(/* webpackChunkName: "BasisTwoWayBinding" */'@/views/basisTwoWayBinding'),
+    CustomTwoWayBinding: () => import(/* webpackChunkName: "CustomTwoWayBinding" */'@/views/customTwoWayBinding'),
+    TodoPage: () => import(/* webpackChunkName: "TodoPage" */'@/views/todoPage'),
+    SlotUsage: () => import(/* webpackChunkName: "SlotUsag" */'@/views/slotUsage')
   },
   data () {
     return {
