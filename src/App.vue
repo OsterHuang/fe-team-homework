@@ -2,51 +2,25 @@
   <div id="app">
     <div class="test-pre-processor">
       <div class="app-head">
-        <a href="#" @click.stop="switchPage('BasisUsage')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisUsage' }">基礎使用</a> |
-        <a href="#" @click.stop="switchPage('BasisForm')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisForm' }">基礎表單</a> |
-        <a href="#" @click.stop="switchPage('BasisTwoWayBinding')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'BasisTwoWayBinding' }">雙向綁定</a> |
-        <a href="#" @click.stop="switchPage('CustomTwoWayBinding')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'CustomTwoWayBinding' }">客製雙向綁定</a> |
-        <a href="#" @click.stop="switchPage('TodoPage')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'TodoPage' }">Todo列表</a> |
-        <a href="#" @click.stop="switchPage('SlotUsage')" class="nav-link" :class="{ 'nav-link-selected': viewChecked === 'SlotUsage' }">Slot使用</a>
+        <router-link to="/basisUsage" class="nav-link">基礎使用</router-link> |
+        <router-link to="/basisForm" class="nav-link">基礎表單</router-link> |
+        <router-link to="/basisTwoWayBinding" class="nav-link">雙向綁定</router-link> |
+        <router-link to="/customTwoWayBinding" class="nav-link">客製雙向綁定</router-link> |
+        <router-link to="/todoPage" class="nav-link">Todo列表</router-link> |
+        <router-link to="/slotUsage" class="nav-link">Slot使用</router-link>
       </div>
       <div class="app-content">
         <keep-alive>
-          <component :is="viewChecked" />
+          <router-view />
         </keep-alive>
-        <!-- <BasisUsage v-if="viewChecked === 'BasisUsage'" />
-        <BasisForm v-if="viewChecked === 'BasisForm'" />
-        <BasisTwoWayBinding v-if="viewChecked === 'BasisTwoWayBinding'" />
-        <CustomTwoWayBinding v-if="viewChecked === 'CustomTwoWayBinding'" />
-        <TodoPage v-if="viewChecked === 'TodoPage'" />
-        <SlotUsage v-if="viewChecked === 'SlotUsage'" /> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BasisUsage from '@/views/basisUsage'
-import BasisForm from '@/views/basisForm'
-import BasisTwoWayBinding from '@/views/basisTwoWayBinding'
-import CustomTwoWayBinding from '@/views/customTwoWayBinding'
-import TodoPage from '@/views/todoPage'
-import SlotUsage from '@/views/slotUsage'
-
 export default {
   name: 'App',
-  components: {
-    BasisUsage,
-    BasisForm,
-    BasisTwoWayBinding,
-    CustomTwoWayBinding,
-    TodoPage,
-    SlotUsage
-  },
-  data () {
-    return {
-      viewChecked: ''
-    }
-  },
   methods: {
     switchPage (name) {
       this.viewChecked = name
