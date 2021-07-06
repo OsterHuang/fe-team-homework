@@ -7,7 +7,8 @@
         <router-link to="/basisTwoWayBinding" class="nav-link">雙向綁定</router-link> |
         <router-link to="/customTwoWayBinding" class="nav-link">客製雙向綁定</router-link> |
         <router-link to="/todoPage" class="nav-link">Todo列表</router-link> |
-        <router-link to="/slotUsage" class="nav-link">Slot使用</router-link>
+        <router-link to="/slotUsage" class="nav-link">Slot使用</router-link> |
+        <router-link to="/routerParam" class="nav-link">router參數</router-link> |
       </div>
       <div class="app-content">
         <keep-alive>
