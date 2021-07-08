@@ -18,18 +18,25 @@
       <tr>
         <td>$router param方式-動畫效果</td>
         <td>
-          <input id="rdoLeftToRight" type="radio" v-model="transitionType" value="left-to-right" /><label for="rdoLeftToRight">由左至右</label>
+          <label><input id="rdoLeftToRight" type="radio" v-model="transitionType" value="left-to-right" />由左至右</label>
           <br />
-          <input id="rdoRightToLeft" type="radio" v-model="transitionType" value="right-to-left" /><label for="rdoRigthToLeft">由右至左</label>
+          <label><input id="rdoRightToLeft" type="radio" v-model="transitionType" value="right-to-left" />由右至左</label>
           <br />
-          <input id="rdoTopToBottom" type="radio" v-model="transitionType" value="top-to-bottom" /><label for="rdoTopToBottom">由上至下</label>
+          <label><input id="rdoTopToBottom" type="radio" v-model="transitionType" value="top-to-bottom" />由上至下</label>
           <br />
-          <input id="rdoBottomToTop" type="radio" v-model="transitionType" value="bottom-to-top" /><label for="rdoBottomToTop">由下至上</label>
+          <label><input id="rdoBottomToTop" type="radio" v-model="transitionType" value="bottom-to-top" />由下至上</label>
           <br />
         </td>
         <td><button @click="goTransitionPage">去子頁</button></td>
       </tr>
     </table>
+
+    <div class="sub-page-container">
+      <h4>以下為第一階子路由頁面</h4>
+      <div class="sub-page-level-1">
+        <router-view :transitionType="transitionType" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -39,7 +46,7 @@ export default {
     return {
       loopCount: 8,
       orderNo: 'SO701471311',
-      transitionType: 'top-to-bottom'
+      transitionType: ''
     }
   },
   methods: {
@@ -64,6 +71,7 @@ export default {
   display flex
   flex-direction column
   align-items center
+  height 100%
   color #444
 
   > table
@@ -74,4 +82,11 @@ export default {
       border 1px solid #eeeef2
     input[type="text"]
       width 95%
+  .sub-page-container
+    height 100%
+    width 100%
+    .sub-page-level-1
+      height 100%
+      width 100%
+      background-color #EEE
 </style>

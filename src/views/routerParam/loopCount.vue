@@ -20,8 +20,12 @@ export default {
     loopCount () { return +this.$route.query.loopCount }
   },
   watch: {
-    loopCount (newVal) {
-      this.loopItems = this.initData()
+    loopCount: {
+      handler: function (newVal) {
+        console.log(newVal)
+        this.loopItems = this.initData()
+      },
+      immediate: true
     }
   },
   methods: {
