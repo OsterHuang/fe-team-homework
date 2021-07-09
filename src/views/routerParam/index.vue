@@ -35,6 +35,7 @@
       <h4>以下為第一階子路由頁面</h4>
       <div class="sub-page-level-1">
         <router-view :transitionType="transitionType" />
+        <router-view name="confirm" />
       </div>
     </div>
   </div>
@@ -56,7 +57,7 @@ export default {
     },
     goOrderDetail () {
       console.log('去訂單詳情子頁')
-      this.$router.push({ path: `/routerParam/orderDetail/${this.orderNo}` })
+      this.$router.push({ path: `/routerParam/orderDetail/${this.orderNo}/index` })
     },
     goTransitionPage () {
       console.log('去過場效果子頁')

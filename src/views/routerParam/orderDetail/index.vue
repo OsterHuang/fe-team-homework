@@ -6,9 +6,15 @@
       <router-link class="tab-item" :to="`${myPath}/TabAttr`">主資料</router-link>
       <router-link class="tab-item" :to="`${myPath}/TabItems`">項目</router-link>
     </div>
+
     <div class="order-detail-tab-content">
       <router-view />
     </div>
+
+    <router-view name="confirm" />
+
+    <button @click="toggleCancelConfirm"> 取消訂單 </button>
+
   </div>
 </template>
 
@@ -17,6 +23,11 @@ export default {
   data () {
     return {
       myPath: this.$route.path
+    }
+  },
+  methods: {
+    toggleCancelConfirm () {
+      this.$router.push({ name: 'cancelOrderConfirmation' })
     }
   }
 }
