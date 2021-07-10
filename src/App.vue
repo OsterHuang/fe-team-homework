@@ -8,11 +8,18 @@
         <router-link to="/customTwoWayBinding" class="nav-link">客製雙向綁定</router-link> |
         <router-link to="/todoPage" class="nav-link">Todo列表</router-link> |
         <router-link to="/slotUsage" class="nav-link">Slot使用</router-link> |
-        <router-link to="/routerParam" class="nav-link">router參數</router-link> |
+        <router-link to="/routerParam" class="nav-link">router參數</router-link>
+
+        <div class="flex-space" />
+
+        <div class="login-status" @click="toggleLoginStatus">
+          <span v-if="isLogin">已登入</span>
+          <span v-else>未登入</span>
+        </div>
       </div>
       <div class="app-content">
         <keep-alive>
-          <router-view />
+          <router-view :is-login="isLogin" />
         </keep-alive>
       </div>
     </div>
@@ -22,9 +29,18 @@
 <script>
 export default {
   name: 'App',
+  data () {
+    return {
+      isLogin: localStorage.getItem('isLogin')
+    }
+  },
   methods: {
     switchPage (name) {
       this.viewChecked = name
+    },
+    toggleLoginStatus () {
+      this.isLogin = !this.isLogin
+      localStorage.setItem('isLogin', this.isLogin)
     }
   }
 }
@@ -56,6 +72,7 @@ html, body, div {
   height 100%
   flex-direction column
   .app-head
+    display flex
     border 1px #ccc solid
     padding 30px
     .nav-link
@@ -67,9 +84,18 @@ html, body, div {
     .nav-link-selected
       text-decoration underline
       font-weight bold
+    .login-status
+      border 1px solid #88aaff
+      border-radius 16px
+      padding 6px
+      color #88aaff
+      cursor pointer
   .app-content
-    flex 1
+    flex 0.6
     margin-top 8px
     border 1px #ccc solid
     padding 30px
+
+.flex-space
+  flex 1
 </style>

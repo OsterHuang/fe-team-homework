@@ -49,6 +49,12 @@ export default {
   components: {
     ModalSimulation
   },
+  props: {
+    isLogin: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       receiptList: [
@@ -65,6 +71,20 @@ export default {
         ['椅子', '650', '10', '2021-06-16'],
         ['桌子', '1200', '5', '2021-06-16']
       ]
+    }
+  },
+  created () {
+    console.log('this.$route.meta: ', this.$route.meta.loginRequired)
+    if (this.$route.meta.loginRequired && !this.isLogin) {
+      alert('此頁需要登入')
+      this.$router.back()
+    }
+  },
+  activated () {
+    console.log('this.$route.meta: ', this.$route.meta.loginRequired)
+    if (this.$route.meta.loginRequired && !this.isLogin) {
+      alert('此頁需要登入')
+      this.$router.back()
     }
   }
 }

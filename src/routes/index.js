@@ -10,12 +10,12 @@ import SlotUsage from '@/views/slotUsage'
 import routesOfRouteParam from './routeParam'
 
 const routes = [
-  { path: '/basisUsage', component: BasisUsage },
+  { path: '/basisUsage', component: BasisUsage, meta: { loginRequired: true } },
   { path: '/basisForm', component: BasisForm },
   { path: '/basisTwoWayBinding', component: BasisTwoWayBinding },
   { path: '/customTwoWayBinding', component: CustomTwoWayBinding },
   { path: '/todoPage', component: TodoPage },
-  { path: '/slotUsage', component: SlotUsage },
+  { path: '/slotUsage', component: SlotUsage, meta: { loginRequired: true } },
   routesOfRouteParam
 ]
 
