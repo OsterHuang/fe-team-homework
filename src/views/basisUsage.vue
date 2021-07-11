@@ -50,18 +50,6 @@ export default {
         else if (this.filteredColor === 'w' && stone.seq % 2 === 0) return stone
       })
     }
-  },
-  created () {
-    if (this.$route.meta.loginRequired && !this.isLogin) {
-      alert('此頁需要登入')
-      this.$router.back()
-    }
-  },
-  activated () {
-    if (this.$route.meta.loginRequired && !this.isLogin) {
-      alert('此頁需要登入')
-      this.$router.back()
-    }
   }
 }
 </script>

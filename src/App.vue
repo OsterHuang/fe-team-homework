@@ -19,7 +19,7 @@
       </div>
       <div class="app-content">
         <keep-alive>
-          <router-view :is-login="isLogin" />
+          <router-view />
         </keep-alive>
       </div>
     </div>

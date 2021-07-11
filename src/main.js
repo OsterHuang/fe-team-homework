@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import App from '@/App.vue'
 import rootRouter from '@/routes'
+import '@/routes/interceptor'
 
 Vue.config.productionTip = false
 
