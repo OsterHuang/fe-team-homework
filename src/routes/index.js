@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import BasisUsage from '@/views/basisUsage'
@@ -19,7 +20,11 @@ const routes = [
   routesOfRouteParam
 ]
 
-export default new VueRouter({
+Vue.use(VueRouter)
+
+const router = new VueRouter({
   routes,
   linkActiveClass: 'nav-link-selected'
 })
+
+export default router

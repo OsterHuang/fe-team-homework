@@ -27,20 +27,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'App',
-  data () {
-    return {
-      isLogin: localStorage.getItem('isLogin')
-    }
+  computed: {
+    ...mapState({
+      isLogin: state => state.isLogin
+    })
   },
   methods: {
     switchPage (name) {
       this.viewChecked = name
     },
     toggleLoginStatus () {
-      this.isLogin = !this.isLogin
-      localStorage.setItem('isLogin', this.isLogin)
+      this.$store.commit('SET_IS_LOGIN', !this.isLogin)
     }
   }
 }
