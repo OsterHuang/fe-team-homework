@@ -33,7 +33,7 @@ export default {
   name: 'App',
   computed: {
     ...mapState({
-      isLogin: state => state.isLogin
+      isLogin: state => state.auth.isLogin
     })
   },
   methods: {
@@ -41,7 +41,7 @@ export default {
       this.viewChecked = name
     },
     toggleLoginStatus () {
-      this.$store.commit('SET_IS_LOGIN', !this.isLogin)
+      this.$store.commit('auth/SET_IS_LOGIN', !this.isLogin)
     }
   }
 }

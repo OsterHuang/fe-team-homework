@@ -3,7 +3,7 @@ import store from '@/store'
 
 rootRouter.beforeEach((to, from, next) => {
   if (to.meta.loginRequired) {
-    if (store.state.isLogin === true) {
+    if (store.auth.state.isLogin === true) {
       next()
       return
     }
